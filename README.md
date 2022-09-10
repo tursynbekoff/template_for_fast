@@ -1,4 +1,4 @@
-# E-commerce mock project 
+# Open Library Browser exercise
 
 here is the live [link]() to the website
 
