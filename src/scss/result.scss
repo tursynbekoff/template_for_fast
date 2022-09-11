@@ -5,11 +5,32 @@
 
 .card-wrapper {
   display: flex;
-  flex-wrap: wrap;
+
+  &.false-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+  &.true-list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .result-text {
   text-align: center;
   font-family: 'OpenSans';
   font-weight: 700;
+}
+
+.toggle {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+
+  &:hover {
+    opacity: 70%;
+  }
 }

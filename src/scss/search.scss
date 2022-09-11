@@ -6,6 +6,12 @@
   flex-direction: column;
 
   form {
+    // position: fixed;
+    // overflow: hidden;
+    // top: 50px;
+    width: 320px;
+    background-color: white;
+
     display: flex;
     padding: 10px;
     // flex-direction: column;
@@ -26,6 +32,9 @@
       border: 0;
       border-radius: 5px;
       margin-left: 10px;
+      &:hover {
+        filter: brightness(95%);
+      }
     }
 
     button {
@@ -35,6 +44,10 @@
       border: 0;
       border-radius: 5px;
       color: teal;
+
+      &:hover {
+        filter: brightness(90%);
+      }
     }
   }
 }

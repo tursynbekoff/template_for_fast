@@ -1,24 +1,72 @@
 .card {
   display: flex;
-  flex-direction: column;
 
   padding: 10px 5px;
-  width: 150px;
+  flex-grow: 1;
   font-family: "Roboto";
+
+  &.card__false-list {
+    margin: 5px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-height: 250px;
+    width: 140px;
+    outline: 1px solid lightgray;
+    border-radius: 5px;
 
   @media screen and (min-width: 769px) {
     padding: 20px 15px;
-    width: 200px;
+    width: 205px;
   }
 
+    .publish-year {
+      display: none;
+    }
+    .isbn {
+      display: none;
+    }
+  }
+
+  &.card__true-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: start;
+
+    &:nth-of-type(even){
+      background-color: aliceblue;
+    }
+  }
+
+
   img {
-    width: 50px
+    width: 50px;
+    height: 100%;
+    object-fit: contain;
+    margin-right: 20px;
   }
 
   .title {
+    // margin: 0;
     font-size: 14px;
+    width: 150px;
+    margin-right: 10px;
     @media screen and (min-width: 769px) {
       font-size: 16px;
     }
+  }
+
+  .author {
+    margin-right: 10px;
+    width: 150px;
+  }
+
+  .publish-year {
+    margin-right: 10px;
+    width: 50px;
+  }
+
+  .publish-year {
+    width: 100px;
   }
 }

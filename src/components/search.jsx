@@ -8,12 +8,20 @@ const SearchParams = () => {
   const [data, setData] = useState([]);
   const query = new URLSearchParams();
 
+  const [list, setList] = useState(false);
+
+  function toggle() {
+    setList(!list);
+  }
+
   useEffect(() => {
     if(params.get("search")) {
       setName(params.get("search"))
     }
     requestData()
   }, []);
+
+  console.log(list)
 
   async function requestData() {
     const res = await fetch(
@@ -55,7 +63,16 @@ const SearchParams = () => {
         </label>
         <button>Search</button>
       </form>
-      <Results data={data} />
+      <div>
+        <button className="toggle" onClick={toggle} aria-label="toggle list and gride mode"> 
+          {
+            list ? 
+            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/list.png" alt="list icon"/>:
+            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/grid.png" alt="grid icon"/>
+          }
+        </button>
+      </div>
+      <Results data={data} toggle={list} />
     </div>
   );
 };

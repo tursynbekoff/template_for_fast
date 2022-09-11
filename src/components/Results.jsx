@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Pagination from "./Pagination.jsx";
 
-const Results = ({ data }) => {
+const Results = ({ data, toggle }) => {
 
   const {numFound, docs} = data;
 
@@ -12,11 +12,11 @@ const Results = ({ data }) => {
       ) : (
         <>
           <h2 className="result-text">{numFound} Books Found</h2>
-          <div className="card-wrapper">
+          <div className={`card-wrapper ${toggle}-list`}>
             {typeof docs === 'object' &&
               (docs.map((item, index) => {
                 return (
-                  <Pagination key={`index-${index}`} item={item} />
+                  <Pagination key={`index-${index}`} toggle={toggle} item={item} />
               )}))
             }
           </div>
