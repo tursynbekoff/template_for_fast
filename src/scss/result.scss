@@ -1,0 +1,15 @@
+.result {
+  min-width: 320px;
+  max-width: 1200px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.result-text {
+  text-align: center;
+  font-family: 'OpenSans';
+  font-weight: 700;
+}

@@ -1,0 +1,40 @@
+.search-params {
+  margin-top: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    padding: 10px;
+    // flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    max-width: 480px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    input {
+      padding: 10px 20px;
+      background-color:rgb(245, 245, 245);
+      border: 0;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    button {
+      // width: 200px;
+      margin-left: 10px;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 5px;
+      color: teal;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React, { StrictMode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Nav.jsx";
 import Context from "./components/Context.jsx";
-import SearchParams from "./components/SearchParams.jsx";
+import SearchParams from "./components/search.jsx";
 
 const App = () => {
 
