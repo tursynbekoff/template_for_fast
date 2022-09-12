@@ -13,7 +13,7 @@
 
     max-height: 250px;
     width: 140px;
-    outline: 1px solid lightgray;
+    border: 1px solid lightgray;
     border-radius: 5px;
 
     @media screen and (min-width: 769px) {
@@ -112,6 +112,8 @@
     background-color: transparent;
     cursor: pointer;
     border: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .publish-year {
