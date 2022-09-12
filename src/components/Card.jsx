@@ -24,11 +24,14 @@ const Card = ({ item, toggle }) => {
       <h3 className="title">
         {item.title_suggest}
       </h3>
-      {
-        typeof item.author_name === "object" && 
-        (
-          <p className="author">{item.author_name[0]}</p>
-        )
+      { 
+        <p className="author">
+          {
+            (typeof item.author_name === "object") ?
+              item.author_name[0] :
+              "no author"
+          }
+        </p>
       }
       <p className="publish-year">{item.first_publish_year}</p>
       {
