@@ -1,4 +1,4 @@
-# E-commerce mock project 
+# Book search engine with openlibrary api
 
 here is the live [link](https://gofore-tursynbekoff.vercel.app/) to the website
 
