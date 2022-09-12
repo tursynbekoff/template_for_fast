@@ -35,9 +35,7 @@ const SearchParams = () => {
     setLoading(false);
     setData(json);
   }
-
-  console.log(loading);
-
+  
   const onInputValueChangeEventHandler = (value) => {
 			if (value) {
       query.set("search",  value);

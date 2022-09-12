@@ -1,6 +1,6 @@
-# Open Library Browser exercise
+# E-commerce mock project 
 
-here is the live [link]() to the website
+here is the live [link](https://gofore-tursynbekoff.vercel.app/) to the website
 
 ### Instruction
 
@@ -13,3 +13,5 @@ npm install
 npm run dev
 
 
+
+<img width="300" alt="" src="https://res.cloudinary.com/tursynbekoff/image/upload/v1663013511/gofore/Screenshot.jpg">
