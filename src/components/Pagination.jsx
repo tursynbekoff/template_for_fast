@@ -14,7 +14,6 @@ function PaginatedItems({ itemsPerPage, toggle, docs }) {
     if (typeof docs === 'object')  {
       setItems(docs);
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       setCurrentItems(docs.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(docs.length / itemsPerPage));
     }
@@ -23,9 +22,6 @@ function PaginatedItems({ itemsPerPage, toggle, docs }) {
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % docs.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
@@ -42,11 +38,11 @@ function PaginatedItems({ itemsPerPage, toggle, docs }) {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="next"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="previous"
         renderOnZeroPageCount={null}
       />
     </>

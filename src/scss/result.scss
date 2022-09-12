@@ -25,6 +25,32 @@
   font-weight: 700;
 }
 
+.control {
+  display: flex;
+  align-items: center;
+
+  font-family: 'OpenSans';
+  font-weight: 500;
+
+}
+
+.paginate {
+  border: 0;
+  background-color: transparent;
+  outline: 1px solid lightgray;
+  border-radius: 3px;
+  margin: 3px;
+  padding: 6px 3px;
+
+  &.active {
+    background-color: antiquewhite;
+  }
+
+  &:hover {
+    opacity: 70%;
+  }
+}
+
 .toggle {
   border: 0;
   background-color: transparent;

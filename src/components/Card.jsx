@@ -21,10 +21,14 @@ const Card = ({ item, toggle }) => {
       }
       <p className="publish-year">{item.first_publish_year}</p>
       {
-        typeof item.isbn === "object" && 
-        (
-          <p className="isbn">{item.isbn[0]}</p>
-        )
+        <p className="isbn">
+          {
+            (typeof item.isbn === "object") ? 
+              item.isbn[0]
+              :
+              "no ISBN"
+          }
+        </p>
       }
     </div>
   )

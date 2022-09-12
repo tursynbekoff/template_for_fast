@@ -2,10 +2,26 @@ import React, { useState, useEffect } from "react";
 import Results from "./Results.jsx";
 import { useSearchParams } from "react-router-dom";
 
+const paginateList = [
+  {
+    value: 10,
+  },
+  {
+    value: 20,
+  },
+  {
+    value: 50,
+  },
+]
+
 const SearchParams = () => {
   const [name, setName] = useState("");
   const [params, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
+  const [element, setElements] = useState(10);
+  const [active, setActive] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const query = new URLSearchParams();
 
   const [list, setList] = useState(false);
@@ -21,16 +37,17 @@ const SearchParams = () => {
     requestData()
   }, []);
 
-  console.log(list)
-
   async function requestData() {
+    setLoading(true);
     const res = await fetch(
       `https://openlibrary.org/search.json?title=${name}`
     );
     const json = (await res.json());
-
+    setLoading(false);
     setData(json);
   }
+
+  console.log(loading);
 
   const onInputValueChangeEventHandler = (value) => {
 			if (value) {
@@ -38,6 +55,11 @@ const SearchParams = () => {
 			setSearchParams(query);	
 		}
   }
+
+  const handleIndexClick = (event) => {
+    setElements(event.target.value);
+    setActive(+event.target.dataset.index);
+  };
 
   return (
     <div className="search-params">
@@ -48,7 +70,6 @@ const SearchParams = () => {
         }}
       >
         <label htmlFor="search">
-          {/* Book title */}
           <input
             id="search"
             type="text"
@@ -63,7 +84,22 @@ const SearchParams = () => {
         </label>
         <button>Search</button>
       </form>
-      <div>
+      <div className="control">
+        Books per page
+        {
+          paginateList.map((item, index) => {
+            return (
+              <button 
+                className={`paginate ${index === active ? "active" : ""}`}
+                value={item.value}
+                onClick={handleIndexClick}
+                data-index={index}  
+              >
+              {item.value}
+            </button>
+            )   
+          })
+        }
         <button className="toggle" onClick={toggle} aria-label="toggle list and gride mode"> 
           {
             list ? 
@@ -72,7 +108,14 @@ const SearchParams = () => {
           }
         </button>
       </div>
-      <Results data={data} toggle={list} />
+      {
+        !loading ? (
+          <Results data={data} toggle={list} element={element}/>
+        ) :
+        (
+          <h2>loading … </h2>
+        )
+      }
     </div>
   );
 };
