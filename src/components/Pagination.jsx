@@ -1,12 +1,56 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import ReactPaginate from 'react-paginate';
 import Card from "./Card.jsx";
 
-const Pagination = ({ item, toggle }) => {
-  console.log("item :", item)
-  const {cover_i, title} = item;
+function PaginatedItems({ itemsPerPage, toggle, docs }) {
+
+  const [items, setItems ] = useState([]);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  useEffect(() => {
+
+    if (typeof docs === 'object')  {
+      setItems(docs);
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      setCurrentItems(docs.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(docs.length / itemsPerPage));
+    }
+  }, [itemOffset, itemsPerPage]);
+
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % docs.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
+
   return (
-    <Card  item={item} toggle={toggle}/>
-  )
+    <>
+      <div className={`card-wrapper ${toggle}-list`}>
+        {currentItems &&
+          (currentItems.map((item, index) => {
+            return (
+              <Card key={`index-${index}`} item={item} toggle={toggle}/>
+          )}))
+        }
+      </div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
+    </>
+  );
 }
 
-export default Pagination;
+export default PaginatedItems;

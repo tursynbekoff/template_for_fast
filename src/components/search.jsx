@@ -25,7 +25,7 @@ const SearchParams = () => {
 
   async function requestData() {
     const res = await fetch(
-      `http://openlibrary.org/search.json?title=${name}`
+      `https://openlibrary.org/search.json?title=${name}`
     );
     const json = (await res.json());
 

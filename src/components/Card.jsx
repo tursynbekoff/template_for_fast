@@ -6,7 +6,7 @@ const Card = ({ item, toggle }) => {
   return (
     <div className={`card card__${toggle}-list`}>
       {item.cover_i ?
-        <img src={`http://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}/>
+        <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}/>
         :
         <img src={`https://res.cloudinary.com/tursynbekoff/image/upload/w_50/v1662125174/no-image-1024x1024.png`}/>
       }
