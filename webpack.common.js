@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const FontPreloadPlugin = require('webpack-font-preload-plugin');
 
 module.exports = {
   entry: {
@@ -12,12 +11,6 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
       favicon: 'src/favicon.ico'
     }),
-    // new FontPreloadPlugin(
-    //   {
-    //     extensions: ['woff2', 'ttf', 'eot'],
-    //     loadType: 'preload',
-    //   }
-    // ),
     new CleanWebpackPlugin(),
   ],
   devServer: {
