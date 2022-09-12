@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Results from "./Results.jsx";
+import Control from "./Control.jsx";
 import { useSearchParams } from "react-router-dom";
-
-const paginateList = [
-  {
-    value: 10,
-  },
-  {
-    value: 20,
-  },
-  {
-    value: 50,
-  },
-]
 
 const SearchParams = () => {
   const [name, setName] = useState("");
@@ -84,30 +73,7 @@ const SearchParams = () => {
         </label>
         <button>Search</button>
       </form>
-      <div className="control">
-        Books per page
-        {
-          paginateList.map((item, index) => {
-            return (
-              <button 
-                className={`paginate ${index === active ? "active" : ""}`}
-                value={item.value}
-                onClick={handleIndexClick}
-                data-index={index}  
-              >
-              {item.value}
-            </button>
-            )   
-          })
-        }
-        <button className="toggle" onClick={toggle} aria-label="toggle list and gride mode"> 
-          {
-            list ? 
-            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/list.png" alt="list icon"/>:
-            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/grid.png" alt="grid icon"/>
-          }
-        </button>
-      </div>
+     <Control toggle={toggle} handleIndexClick={handleIndexClick} active={active} list={list}/>
       {
         !loading ? (
           <Results data={data} toggle={list} element={element}/>

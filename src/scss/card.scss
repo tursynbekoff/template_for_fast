@@ -108,6 +108,12 @@
     }
   }
 
+  .card__img-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+  }
+
   .publish-year {
     margin-right: 10px;
     width: 45px;

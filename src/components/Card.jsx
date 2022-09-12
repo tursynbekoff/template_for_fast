@@ -1,12 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
+import Modal from "./Modal.jsx";
 
 
 const Card = ({ item, toggle }) => {
+  const [modal, setModal] = useState(false);
+  const [img, setImg] = useState("")
+
+  function toggleModal(cover) {
+    setModal(!modal);
+    setImg(cover)
+  }
 
   return (
+    <>
     <div className={`card card__${toggle}-list`}>
       {item.cover_i ?
-        <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}/>
+        <button className="card__img-button" onClick={() =>{toggleModal(item.cover_i)}}>
+          <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}/>
+        </button>
         :
         <img src={`https://res.cloudinary.com/tursynbekoff/image/upload/w_50/v1662125174/no-image-1024x1024.png`}/>
       }
@@ -31,6 +42,15 @@ const Card = ({ item, toggle }) => {
         </p>
       }
     </div>
+      {modal ? (
+        <Modal>
+          <div className="img-wrapper">
+            <img src={`https://covers.openlibrary.org/b/id/${img}-L.jpg`}/>
+          </div>
+          <button onClick={toggleModal}>close</button>
+        </Modal>
+      ) : null}
+    </>
   )
 }
 
