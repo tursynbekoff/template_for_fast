@@ -17,8 +17,7 @@ function PaginatedItems({ itemsPerPage, toggle, docs }) {
       setCurrentItems(docs.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(docs.length / itemsPerPage));
     }
-  }, [itemOffset, itemsPerPage]);
-
+  }, [itemOffset, itemsPerPage, docs]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % docs.length;

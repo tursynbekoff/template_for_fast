@@ -20,7 +20,6 @@ const SearchParams = () => {
   }
 
   useEffect(() => {
-    requestData();
 
     if(params.get("search")) {
       setName(params.get("search"));
@@ -40,11 +39,7 @@ const SearchParams = () => {
   }
   
   const onInputValueChangeEventHandler = (e) => {
-      setName(e.target.value)
-			if (e.target.value) {
-      query.set("search",  e.target.value);
-			setSearchParams(query);	
-		}
+    setName(e.target.value)
   }
 
   const handleIndexClick = (event) => {
@@ -54,7 +49,12 @@ const SearchParams = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+
     requestData();
+    if (name) {
+      query.set("search", name);
+			setSearchParams(query);	
+		}
   }
 
   function once(fn, context) { 
