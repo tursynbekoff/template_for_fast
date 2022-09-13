@@ -1,5 +1,6 @@
 #modal {
   background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
   position: fixed;
   left: 0;
   right: 0;
@@ -45,7 +46,7 @@
   .img-wrapper {
     min-width: 280px;
     min-height: 400px;
-    
+
     img {
       width: 280px;
       overflow: hidden;
