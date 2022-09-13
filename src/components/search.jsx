@@ -11,6 +11,8 @@ const SearchParams = () => {
   const [active, setActive] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const query = new URLSearchParams();
+
   const [list, setList] = useState(false);
 
   function toggle() {
