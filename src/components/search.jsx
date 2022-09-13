@@ -35,6 +35,10 @@ const SearchParams = () => {
     setLoading(false);
     setData(json);
   }
+
+  // if(typeof name === "string") {
+  //   requestData()
+  // }
   
   const onInputValueChangeEventHandler = (value) => {
 			if (value) {
