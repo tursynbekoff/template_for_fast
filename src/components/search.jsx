@@ -20,25 +20,22 @@ const SearchParams = () => {
   }
 
   useEffect(() => {
+    requestData()
     if(params.get("search")) {
       setName(params.get("search"))
+      requestData(params.get("search"));
     }
-    requestData()
   }, []);
 
-  async function requestData() {
+  async function requestData(inpt) {
     setLoading(true);
     const res = await fetch(
-      `https://openlibrary.org/search.json?title=${name}`
+      inpt ? `https://openlibrary.org/search.json?title=${inpt}` : `https://openlibrary.org/search.json?title=${name}`
     );
     const json = (await res.json());
     setLoading(false);
     setData(json);
   }
-
-  // if(typeof name === "string") {
-  //   requestData()
-  // }
   
   const onInputValueChangeEventHandler = (value) => {
 			if (value) {
