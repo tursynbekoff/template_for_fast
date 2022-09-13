@@ -45,14 +45,15 @@
   .img-wrapper {
     min-width: 280px;
     min-height: 400px;
+    
     img {
       width: 280px;
       overflow: hidden;
       object-fit: contain;
 
-      @media screen and (min-width: 769px) {
-        width: 320px;
-      }
+        @media screen and (min-width: 769px) {
+          width: 320px;
+        }
     }
   }
 

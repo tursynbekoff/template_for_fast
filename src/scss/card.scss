@@ -101,6 +101,8 @@
       text-align: center;
       @media screen and (min-width: 769px) {
         align-items: center;
+        text-align: left;
+        justify-content: left;
         order: 1;
         height: 74px;
         width: 250px;
