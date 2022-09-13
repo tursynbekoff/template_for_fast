@@ -24,13 +24,15 @@ const SearchParams = () => {
 
     if(params.get("search")) {
       setName(params.get("search"));
+      canOnlyFireOnce();
     }
   }, []);
 
-  async function requestData() {
+  async function requestData(inpt) {
+
     setLoading(true);
     const res = await fetch(
-      `https://openlibrary.org/search.json?title=${name}`
+      !inpt ? `https://openlibrary.org/search.json?title=${name}` : `https://openlibrary.org/search.json?title=${inpt}`
     );
     const json = (await res.json());
     setLoading(false);
@@ -54,6 +56,22 @@ const SearchParams = () => {
     e.preventDefault();
     requestData();
   }
+
+  function once(fn, context) { 
+    let result;
+  
+    return function() { 
+      if(fn) {
+        result = fn.apply(context || this, arguments);
+        fn = null;
+      }
+      return result;
+    };
+  }
+
+  const canOnlyFireOnce = once(function() {
+    requestData(params.get("search"));
+  });
 
   return (
     
