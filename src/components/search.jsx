@@ -11,8 +11,6 @@ const SearchParams = () => {
   const [active, setActive] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const query = new URLSearchParams();
-
   const [list, setList] = useState(false);
 
   function toggle() {
@@ -20,26 +18,27 @@ const SearchParams = () => {
   }
 
   useEffect(() => {
-    requestData()
+    requestData();
+
     if(params.get("search")) {
-      setName(params.get("search"))
-      requestData(params.get("search"));
+      setName(params.get("search"));
     }
   }, []);
 
-  async function requestData(inpt) {
+  async function requestData() {
     setLoading(true);
     const res = await fetch(
-      inpt ? `https://openlibrary.org/search.json?title=${inpt}` : `https://openlibrary.org/search.json?title=${name}`
+      `https://openlibrary.org/search.json?title=${name}`
     );
     const json = (await res.json());
     setLoading(false);
     setData(json);
   }
   
-  const onInputValueChangeEventHandler = (value) => {
-			if (value) {
-      query.set("search",  value);
+  const onInputValueChangeEventHandler = (e) => {
+      setName(e.target.value)
+			if (e.target.value) {
+      query.set("search",  e.target.value);
 			setSearchParams(query);	
 		}
   }
@@ -49,13 +48,16 @@ const SearchParams = () => {
     setActive(+event.target.dataset.index);
   };
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    requestData();
+  }
+
   return (
+    
     <div className="search-params">
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          requestData();
-        }}
+        onSubmit={onFormSubmit}
       >
         <label htmlFor="search">
           <input
@@ -64,10 +66,7 @@ const SearchParams = () => {
             name="search"
             value={name}
             placeholder="search"
-            onChange={(e) => {
-              onInputValueChangeEventHandler(e.target.value)
-              setName(e.target.value)
-            }}
+            onChange={onInputValueChangeEventHandler}
           />
         </label>
         <button>Search</button>
