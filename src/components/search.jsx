@@ -41,9 +41,11 @@ const SearchParams = () => {
   }
 
   const handleIndexClick = (event) => {
-    setElements(event.target.value);
+    setElements(+event.target.value);
     setActive(+event.target.dataset.index);
   };
+
+  console.log("element", element);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
