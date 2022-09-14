@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Modal from "./Modal.jsx";
 
 
-const Card = ({ item, toggle }) => {
+const Card = ({ item, listMode }) => {
   const [modal, setModal] = useState(false);
   const [img, setImg] = useState("")
 
@@ -13,7 +13,7 @@ const Card = ({ item, toggle }) => {
 
   return (
     <>
-      <div className={`card card__${toggle}-list`}>
+      <div className={`card card__${listMode}-list`}>
         {item.cover_i ?
           <button className="card__img-button" onClick={() =>{toggleModal(item.cover_i)}}>
             <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}/>

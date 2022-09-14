@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import ReactPaginate from 'react-paginate';
 import Card from "./Card.jsx";
 
-function PaginatedItems({ itemsPerPage, toggle, docs }) {
+function PaginatedItems({ itemsPerPage, listMode, docs }) {
 
   const [items, setItems ] = useState([]);
   const [currentItems, setCurrentItems] = useState(null);
@@ -27,11 +27,11 @@ function PaginatedItems({ itemsPerPage, toggle, docs }) {
 
   return (
     <>
-      <div className={`card-wrapper ${toggle}-list`}>
+      <div className={`card-wrapper ${listMode}-list`}>
         {currentItems &&
           (currentItems.map((item, index) => {
             return (
-              <Card key={`index-${index}`} item={item} toggle={toggle}/>
+              <Card key={`index-${index}`} item={item} listMode={listMode}/>
           )}))
         }
       </div>

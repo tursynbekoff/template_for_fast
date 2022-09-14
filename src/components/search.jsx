@@ -5,25 +5,21 @@ import { useSearchParams } from "react-router-dom";
 
 const SearchParams = () => {
   const [name, setName] = useState("");
-  const [params, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
   const [element, setElements] = useState(10);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const query = new URLSearchParams();
 
-  const [list, setList] = useState(false);
-
-  function toggle() {
-    setList(!list);
-  }
+  const [listMode, setList] = useState(false);
+  const [params, setSearchParams] = useSearchParams();  
 
   useEffect(() => {
 
     if(params.get("search")) {
       setName(params.get("search"));
-      canOnlyFireOnce();
+      getSearchParams();
     }
   }, []);
 
@@ -36,6 +32,10 @@ const SearchParams = () => {
     const json = (await res.json());
     setLoading(false);
     setData(json);
+  }
+
+  const toggleList = () => {
+    setList(!listMode);
   }
   
   const onInputValueChangeEventHandler = (e) => {
@@ -57,7 +57,7 @@ const SearchParams = () => {
 		}
   }
 
-  function once(fn, context) { 
+  const once = (fn, context) => { 
     let result;
   
     return function() { 
@@ -69,7 +69,7 @@ const SearchParams = () => {
     };
   }
 
-  const canOnlyFireOnce = once(function() {
+  const getSearchParams = once(function() {
     requestData(params.get("search"));
   });
 
@@ -91,10 +91,10 @@ const SearchParams = () => {
         </label>
         <button>Search</button>
       </form>
-     <Control toggle={toggle} handleIndexClick={handleIndexClick} active={active} list={list}/>
+     <Control toggleList={toggleList} handleIndexClick={handleIndexClick} active={active} listMode={listMode}/>
       {
         !loading ? (
-          <Results data={data} toggle={list} element={element}/>
+          <Results data={data} listMode={listMode} element={element}/>
         ) :
         (
           <h2>loading … </h2>

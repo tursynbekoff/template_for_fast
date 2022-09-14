@@ -4,7 +4,7 @@ import PaginatedItems from "./Pagination.jsx";
 
 
 
-const Results = ({ data, toggle, element }) => {
+const Results = ({ data, listMode, element }) => {
 
   const {numFound, docs} = data;
 
@@ -15,7 +15,7 @@ const Results = ({ data, toggle, element }) => {
       ) : (
         <>
           <h2 className="result-text">{numFound} Books Found</h2>
-          < PaginatedItems toggle={toggle} itemsPerPage={element} docs={docs}/>
+          < PaginatedItems listMode={listMode} itemsPerPage={element} docs={docs}/>
           
         </>
       )}
