@@ -45,8 +45,6 @@ const SearchParams = () => {
     setActive(+event.target.dataset.index);
   };
 
-  console.log("element", element);
-
   const onFormSubmit = (e) => {
     e.preventDefault();
 
