@@ -12,7 +12,7 @@ const paginateList = [
   },
 ]
 
-const Control = ({handleIndexClick, toggleList, active, list}) => {
+const Control = ({handleIndexClick, toggleList, active, listMode}) => {
 
   return (
     <div className="control">
@@ -35,8 +35,9 @@ const Control = ({handleIndexClick, toggleList, active, list}) => {
         }
         <button className="toggle" onClick={toggleList} aria-label="toggleList list and gride mode"> 
           {
-            list ? 
-            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/list.png" alt="list icon"/>:
+            listMode ? 
+            <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/list.png" alt="list icon"/>
+            :
             <img src="https://res.cloudinary.com/tursynbekoff/image/upload/w_20/v1662924335/gofore/grid.png" alt="grid icon"/>
           }
         </button>
