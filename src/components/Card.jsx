@@ -1,14 +1,27 @@
 import React, {useState} from "react";
 import Modal from "./Modal.jsx";
-
+import ProgressiveImg from "./progressiveImg.jsx";
 
 const Card = ({ item, listMode }) => {
   const [modal, setModal] = useState(false);
-  const [img, setImg] = useState("")
 
-  function toggleModal(cover) {
+  const BlurredUpImage = () => {
+    const [src, { blur }] = ProgressiveImg(`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`,
+      `https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg`);
+    return (
+      <img
+        src={src}
+        style={{
+          width: 200,
+          filter: blur ? "blur(3px)" : "none",
+          transition: blur ? "none" : "filter 0.3s ease-out"
+        }}
+      />
+    );
+  };
+
+  const toggleModal = () => {
     setModal(!modal);
-    setImg(cover)
   }
 
   return (
@@ -48,7 +61,7 @@ const Card = ({ item, listMode }) => {
       {modal ? (
         <Modal>
           <div className="img-wrapper">
-            <img src={`https://covers.openlibrary.org/b/id/${img}-L.jpg`}/>
+            <BlurredUpImage />
           </div>
           <button onClick={toggleModal}>close</button>
         </Modal>
