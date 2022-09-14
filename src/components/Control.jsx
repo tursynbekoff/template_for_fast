@@ -21,6 +21,7 @@ const Control = ({handleIndexClick, toggleList, active, list}) => {
           paginateList.map((item, index) => {
             return (
               <button 
+                data-testid={`paginate${index}`}
                 key={`key-button-${index}`}
                 className={`paginate ${index === active ? "active" : ""}`}
                 value={item.value}

@@ -16,7 +16,6 @@ const SearchParams = () => {
   const [params, setSearchParams] = useSearchParams();  
 
   useEffect(() => {
-
     if(params.get("search")) {
       setName(params.get("search"));
       getSearchParams();
@@ -24,7 +23,6 @@ const SearchParams = () => {
   }, []);
 
   async function requestData(inpt) {
-
     setLoading(true);
     const res = await fetch(
       !inpt ? `https://openlibrary.org/search.json?title=${name}` : `https://openlibrary.org/search.json?title=${inpt}`
