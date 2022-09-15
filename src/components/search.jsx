@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Results from "./Results.jsx";
 import Control from "./Control.jsx";
+import LoadingView from "./Loading.jsx";
 import { useSearchParams } from "react-router-dom";
 
 const SearchParams = () => {
@@ -94,8 +95,10 @@ const SearchParams = () => {
         !loading ? (
           <Results data={data} listMode={listMode} element={element}/>
         ) :
-        (
-          <h2>loading … </h2>
+        ( 
+          <>
+            <LoadingView />
+          </>
         )
       }
     </div>
