@@ -6,12 +6,14 @@ const LoadingView = () => {
 
   return (
     <div className="result">
-      <h2 className="result-text">Loading ...</h2>
+      <h2 className="result-text loading">
+        Loading
+      </h2>
       <div className={`card-wrapper false-list`}>
         {
           mockList.map((item) => {
             return (
-              <div className={`card card__false-list`}>
+              <div className={`card card__false-list animated-background`}>
                 {
                   <img src={`https://res.cloudinary.com/tursynbekoff/image/upload/w_50/v1662125174/no-image-1024x1024.png`}/>
                 }

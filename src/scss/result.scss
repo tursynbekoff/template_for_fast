@@ -3,6 +3,37 @@
   max-width: 1200px;
 }
 
+// .loading-dot {
+
+// }
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;
+  color: rgb(0, 94, 23);
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgb(0, 94, 23);
+    text-shadow:
+      .25em 0 0 rgb(0, 94, 23),
+      .5em 0 0 rgb(0, 94, 23);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgb(0, 94, 23),
+      .5em 0 0 rgb(0, 94, 23);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgb(0, 94, 23);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}
+}
+
 .card-wrapper {
   display: flex;
 
