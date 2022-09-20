@@ -12,7 +12,6 @@ const SearchParams = () => {
   const [loading, setLoading] = useState(false);
 
   const query = new URLSearchParams();
-
   const [listMode, setList] = useState(false);
   const [params, setSearchParams] = useSearchParams();  
 
@@ -53,7 +52,9 @@ const SearchParams = () => {
     if (name) {
       query.set("search", name);
 			setSearchParams(query);	
-		}
+		} else if (name.length === 0) {
+      document.location.href="/";
+    }
   }
 
   const once = (fn, context) => { 
@@ -77,6 +78,7 @@ const SearchParams = () => {
     <div className="search-params">
       <form
         onSubmit={onFormSubmit}
+        className="search-form"
       >
         <label htmlFor="search">
           <input
