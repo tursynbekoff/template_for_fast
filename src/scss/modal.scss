@@ -1,5 +1,15 @@
+@keyframes onOpening {
+  from {background-color: transparent;}
+  to {
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(3px);
+  }
+}
+
 #modal {
-  background-color: rgba(0, 0, 0, 0.1);
+
+
+  background-color: rgba(0, 0, 0, .1);
   backdrop-filter: blur(3px);
   position: fixed;
   left: 0;
@@ -10,6 +20,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation-name: onOpening;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.2s;
 
   button, a,
   .details button {

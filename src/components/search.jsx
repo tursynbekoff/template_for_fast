@@ -80,7 +80,7 @@ const SearchParams = () => {
       >
         <label htmlFor="search">
           <input
-            id="search"
+            id="search-input"
             type="text"
             name="search"
             value={name}
@@ -88,7 +88,7 @@ const SearchParams = () => {
             onChange={onInputValueChangeEventHandler}
           />
         </label>
-        <button>Search</button>
+        <button id="search-button">Search</button>
       </form>
      <Control toggleList={toggleList} handleIndexClick={handleIndexClick} active={active} listMode={listMode}/>
       {
