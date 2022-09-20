@@ -48,13 +48,13 @@ const SearchParams = () => {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    requestData();
     if (name) {
       query.set("search", name);
 			setSearchParams(query);	
 		} else if (name.length === 0) {
-      document.location.href="/";
+      return 0
     }
+    requestData();
   }
 
   const once = (fn, context) => { 
