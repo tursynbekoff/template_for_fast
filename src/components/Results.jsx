@@ -15,7 +15,7 @@ const Results = ({ data, listMode, element }) => {
       ) : (
         <>
           <h2 className="result-text">
-            <span className="result-number">{+numFound}</span>
+            <span className="result-number">{numFound}</span>
             <>{" "}</>
             Books Found
           </h2>
