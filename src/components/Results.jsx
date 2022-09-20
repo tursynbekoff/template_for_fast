@@ -7,7 +7,7 @@ const Results = ({ data, listMode, element }) => {
   console.log("numFound", data)
   return (
     <div className="result">
-      {numFound === 0 ? (
+      {numFound === 0 || typeof numFound==="undefined" ? (
         <h2 className="result-text">No Books Found</h2>
       ) : (
         <>
