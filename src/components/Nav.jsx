@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <header className="nav">
       <nav className="nav__wrapper">
-        <Link to="/" className="nav__brand brand">
+        <Link to="/" className="nav__brand brand" onClick={() => {document.location.href="/"}}>
           <span className="brand__one">Book</span><span className="brand__two">Store</span>
         </Link >
       </nav>
