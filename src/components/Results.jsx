@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PaginatedItems from "./Pagination.jsx";
 
 const Results = ({ data, listMode, element }) => {
 
   const {numFound, docs} = data;
-  console.log("numFound", data)
+
   return (
     <div className="result">
       {numFound === 0 || typeof numFound==="undefined" ? (
