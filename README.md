@@ -12,6 +12,3 @@ npm install
 
 npm run dev
 
-
-
-<img width="600" alt="" src="https://res.cloudinary.com/tursynbekoff/image/upload/v1663013511/gofore/Screenshot.jpg">

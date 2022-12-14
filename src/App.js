@@ -1,16 +1,13 @@
 import React, { StrictMode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Nav.jsx";
-import SearchParams from "./components/search.jsx";
-
+import Home from "./components/container/Listings.jsx";
 const App = () => {
 
   return (
     <StrictMode>
       <BrowserRouter>
-          <Navbar />
         <Routes>
-          <Route path="/" element={<SearchParams />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>
